@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+
+.theme-scroll {
+  /* scrollbar-color: #144092 white; */
+  scrollbar-color: theme("colors.brand-bg-color") white;
+  scrollbar-width: thin;
+}
+
+:root {
+  --radius: 0.5rem;
+}
+/* styles for scrollable dialog */
+.DialogOverlay {
+  background: rgba(0 0 0 / 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+}
+
+.DialogContent {
+  min-width: 300px;
+  background: white;
+  /* padding: 30px; */
+  border-radius: 4px;
+  /* margin-block: auto; */
+}
+.bd-gradient {
+  position: relative;
+  z-index: 1;
+}
+
+.bd-gradient:before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom right,
+    #d0e2f878,
+    #bfdbfe1a 55%,
+    #d2ccff00 70%
+  );
+  max-height: 100vh;
+  opacity: 0.5;
+}
+.jodit-status-bar {
+  display: none !important;
+}
+@layer components {
+  .required-field {
+    position: relative;
+  }
+  .required-field::after {
+    content: "*";
+    @apply absolute top-0 bottom-0    left-[calc(100%+5px)]  text-[#a52222];
+  }
+}
+
+[data-vaul-drawer][data-vaul-drawer-direction="bottom"]::after {
+  display: none;
+}
